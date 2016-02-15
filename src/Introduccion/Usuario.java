@@ -1,5 +1,7 @@
 package Introduccion;
 
+import java.util.Random;
+
 public class Usuario {
 	//Atributos
 	private String login;
@@ -36,6 +38,20 @@ public class Usuario {
 	//métodos
 	private static boolean validarUsuario(String login){
 		return login.matches("[a-zA-Z].*");
+	}
+	public static String generarLogin(){
+		final String FUENTE_CARACTERES = "aAbBcCdDeEfFgGhHiIjJkKlLm"
+				+ "MnNñÑoOpPqQrRsStTuUvVwWxXyYzZ0123456789>?()=@.:,;!"
+				+ "<&{}";
+		final int tamañoMaximo = 22;
+		Random r = new Random();
+		int tamaño = r.nextInt(tamañoMaximo);
+		String usuario = "";
+		for (int i = 0; i < tamaño; i++) {
+			int elegirCaracter = r.nextInt(FUENTE_CARACTERES.length()-1);
+			usuario += FUENTE_CARACTERES.charAt(elegirCaracter);
+		}
+		return usuario;
 	}
 	
 	//ToString
