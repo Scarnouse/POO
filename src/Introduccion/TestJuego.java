@@ -30,14 +30,19 @@ public class TestJuego {
 					j.addUsuario(u);
 					j.variarPuntuacion((int)Math.random()*99);
 					
-				} catch (usuariosException e){
+				} catch (Usuario.usuariosException e){
 					System.out.println("Login "+ login + " no valido");
 				}
 			}
 			System.out.println("Inicialmente");
 			System.out.println(j);
 			System.out.println("Eliminando Usuario");
-			j.deleteUsuario();
+			if (j.deleteUsuario("Luis")) System.out.println("Usuario borrado");
+			else System.out.println("Usuario no encontrado");
+			System.out.println(j);
+			if (j.deleteUsuario("Geronimo")) System.out.println("Usuario borrado");
+			else System.out.println("Usuario no encontrado");
+			System.out.println(j);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Fichero no existe");

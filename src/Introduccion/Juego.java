@@ -20,11 +20,11 @@ public class Juego {
 	public void addUsuario(Usuario u){
 		this.listaUsuarios.add(u);
 	}
-	public void deleteUsuario(String login){
+	public boolean deleteUsuario(String login){
 		for (Usuario usuario : listaUsuarios) {
-			//if(login==)
+			if (usuario.getLogin().equals(login)) return listaUsuarios.remove(usuario);
 		}
-		
+		return false;				
 	}
 	public void variarPuntuacion (int puntuacion){
 		this.puntuacion+=puntuacion;

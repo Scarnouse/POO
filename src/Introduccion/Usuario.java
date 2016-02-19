@@ -3,6 +3,10 @@ package Introduccion;
 import java.util.Random;
 
 public class Usuario {
+	public class usuariosException extends Exception {
+
+	}
+
 	//Atributos
 	private String login;
 	private String pass;
