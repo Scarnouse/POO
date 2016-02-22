@@ -16,7 +16,7 @@ public class CuentaBancaria {
 		this.numeroCuenta = "";
 		this.saldo = 0;
 		this.interes = 2.5;
-		this.Date = new Date();
+		this.fechaCreacion = new Date();
 	}
 	
 	public CuentaBancaria(double saldo, double interes){
@@ -59,8 +59,17 @@ public class CuentaBancaria {
 	}
 	
 	private String crearDigitoControl(){
-		String PREFIJO+
+		String digitoControl = "";
+		String prefijo = ENTIDAD+OFICINA;
+		
+		//lógica obtenerDigitoControl *Mira en internet*
+		
+		return digitoControl;
 	}
-	
-	
+
+	public static void main(String[] args) {
+		CuentaBancaria cb = new CuentaBancaria();
+		System.out.println(cb.crearDigitoControl());
+		}
 }
+
