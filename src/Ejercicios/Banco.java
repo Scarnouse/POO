@@ -7,7 +7,7 @@ public class Banco {
 	// atributos
 	List<CuentaBancaria> b = new ArrayList<CuentaBancaria>();
 	
-	//métodos
+	//mÃ©todos
 	public void guardarCuentas(CuentaBancaria cuenta){
 		b.add(cuenta);
 	}
@@ -47,7 +47,7 @@ public class Banco {
 		return "El saldo medio de " + b.size() + " cuentas es " + getSaldoMedio();
 	}
 	
-	//método para probar la clase Banco
+	//mÃ©todo para probar la clase Banco
 	/*public static void main(String[] args) {
 		Banco b = null;
 		CuentaBancaria cb, cb1, cb2, cb3, cb4;
@@ -73,7 +73,7 @@ public class Banco {
 			System.out.println(b);
 		} catch (crearCuentaExcepcion e) {
 			// TODO Auto-generated catch block
-			System.out.println("Cuenta errónea");
+			System.out.println("Cuenta errÃ³nea");
 		}
 		
 	}*/
