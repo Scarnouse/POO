@@ -13,17 +13,12 @@ public class CuentaBancaria {
 	private static int cuentasCreadas = 0;
 	
 	//contructor
-	public CuentaBancaria(String numeroCuenta) throws crearCuentaExcepcion{
-		if (numeroCuenta.matches("[0-9]{10}")){
-			this.numeroCuenta = numeroCuenta;
-			this.saldo = 0;
-			this.interes = 2.5;
-			this.fechaCreacion = new Date();
-			cuentasCreadas++;
-		} else {
-			throw new crearCuentaExcepcion();
-		}
-		
+	public CuentaBancaria(){
+		this.numeroCuenta = "";
+		this.saldo = 0;
+		this.interes = 2.5;
+		this.fechaCreacion = new Date();
+		cuentasCreadas++;
 	}
 	
 	public CuentaBancaria(double saldo, double interes){
@@ -38,8 +33,12 @@ public class CuentaBancaria {
 		return numeroCuenta;
 	}
 
-	public void setNumeroCuenta(String numeroCuenta) {
-		this.numeroCuenta = numeroCuenta;
+	public void setNumeroCuenta(String numeroCuenta) throws crearCuentaExcepcion {
+		if (numeroCuenta.matches("[0-9]{10}")){
+			this.numeroCuenta = numeroCuenta;
+		} else {
+			throw new crearCuentaExcepcion();
+		}
 	}
 
 	public double getSaldo() {
@@ -108,18 +107,18 @@ public class CuentaBancaria {
 	}
 
 	//metodo de testeo
-	/*public static void main(String[] args) {
-		CuentaBancaria cb;
+	public static void main(String[] args) {
+		CuentaBancaria cb = new CuentaBancaria();
 		try {
-			cb = new CuentaBancaria("1234567890");
+			cb.setNumeroCuenta("9430301240");	
 			System.out.println(cb.crearDigitoControl());
 			System.out.println(cb);
 		} catch (crearCuentaExcepcion e) {
-			// TODO Auto-generated catch block
-			System.out.println("Cuenta errónea");
+
+			System.out.println("Numero de cuenta errÃ³nea");
 		}
 		
-		}*/
+	}
 
 }
 
