@@ -72,7 +72,7 @@ public class CuentaBancaria {
 	private String crearDigitoControl(){
 		String digitoControl ="";
 		int primerDigito = 0;
-		String prefijo = ENTIDAD+OFICINA+"00";
+		String prefijo = "00"+ENTIDAD+OFICINA;
 		int sumaPrimerDigito = 0;
 		final int[] DIGITOS = {1,2,4,8,5,10,9,7,3,6}; 
 		for (int i = 0; i < DIGITOS.length; i++) {
@@ -80,16 +80,16 @@ public class CuentaBancaria {
 		}
 		primerDigito = 11-(sumaPrimerDigito%11);
 		if (primerDigito==10) primerDigito=1;
-		else if (primerDigito==11) primerDigito=0;
+		if (primerDigito==11) primerDigito=0;
 		int segundoDigito = 0;
 		int sumaSegundoDigito = 0;
 		for (int i = 0; i < DIGITOS.length; i++) {
 			sumaSegundoDigito += Character.getNumericValue(this.numeroCuenta.charAt(i))*DIGITOS[i];
 		}
-		primerDigito = 11-(sumaSegundoDigito%11);
+		segundoDigito = 11-(sumaSegundoDigito%11);
 		if (segundoDigito==10) segundoDigito=1;
-		else if (segundoDigito==11) segundoDigito=0;
-		digitoControl = segundoDigito+""+primerDigito;
+		if (segundoDigito==11) segundoDigito=0;
+		digitoControl = primerDigito+""+segundoDigito;
 		return digitoControl;
 	}
 	
@@ -98,7 +98,7 @@ public class CuentaBancaria {
 	}
 	
 	public void retirarDinero (double cantidad) throws retirarDineroExcepcion{
-		if (saldo>0){
+		if (cantidad<saldo){
 			this.saldo -= cantidad;
 		} else {
 			throw new retirarDineroExcepcion();
@@ -111,10 +111,10 @@ public class CuentaBancaria {
 	}
 
 	//metodo de testeo
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		CuentaBancaria cb = new CuentaBancaria();
 		try {
-			cb.setNumeroCuenta("9430301240");	
+			cb.setNumeroCuenta("6812960280");	
 			System.out.println(cb.crearDigitoControl());
 			System.out.println(cb);
 		} catch (crearCuentaExcepcion e) {
@@ -122,7 +122,7 @@ public class CuentaBancaria {
 			System.out.println("Numero de cuenta errónea");
 		}
 		
-	}*/
+	}
 
 }
 

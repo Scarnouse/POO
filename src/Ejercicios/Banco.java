@@ -9,12 +9,17 @@ public class Banco {
 	CuentaBancaria cb = new CuentaBancaria();
 	
 	//métodos
-	public void guardarCuentas(CuentaBancaria cuenta){
-		b.add(cuenta);
+	public boolean guardarCuentas(CuentaBancaria cuenta) throws cuentaDuplicadaExcepcion{
+		for (int i = 0; i < b.size(); i++) {
+			if(!cuenta.getNumeroCuenta().equals(b.get(i).getNumeroCuenta()) && cuenta.getNumeroCuenta()!=null) continue;
+			else throw new cuentaDuplicadaExcepcion();
+		}
+		return b.add(cuenta);
+		
 	}
 	
-	public void darBajaCuentas(CuentaBancaria cuenta){
-		b.remove(cuenta);
+	public boolean darBajaCuentas(CuentaBancaria cuenta){
+		return b.remove(cuenta);
 	}
 	public CuentaBancaria devolverCuentaMayorSaldo(){
 		CuentaBancaria cbMayorSaldo = b.get(0);
@@ -44,15 +49,22 @@ public class Banco {
 		return saldoMedio/cb.getCuentasCreadas();
 	}
 	
+	public List<CuentaBancaria> devolverListaMorosos(){
+		List<CuentaBancaria> listaMorosos = new ArrayList<CuentaBancaria>();
+		for (int i = 0; i < b.size(); i++) {
+			if(b.get(i).getSaldo()<0) listaMorosos.add(cb);
+		}
+		return listaMorosos;
+	}
+	
 	@Override
 	public String toString() {
-		/*String cadena = "";
+		String cadena = "";
 		for (int i = 0; i < b.size(); i++) {
 			cadena += "Numero de cuenta: " + b.get(i).getNumeroCuenta() + " Saldo: " + b.get(i).getSaldo() +"\n";
 		}
-		return cadena;*/
 		
-		return "El saldo medio de " + b.size() + " cuentas es " + getSaldoMedio();
+		return cadena + "El saldo medio de " + b.size() + " cuentas es " + getSaldoMedio();
 	}
 	
 	//método para probar la clase Banco
