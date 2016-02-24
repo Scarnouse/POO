@@ -4,32 +4,26 @@ import java.util.Random;
 
 public class BancoNuevo{
 	public static void main(String[] args) {
-		Banco b = new Banco();
-		
+		Banco banco = new Banco();
 		CuentaBancaria cb = null, cb1 = null, cb2 = null, cb3 = null, cb4 = null;
+		banco.guardarCuentas(cb = new CuentaBancaria());
+		banco.guardarCuentas(cb1 = new CuentaBancaria());
+		banco.guardarCuentas(cb2 = new CuentaBancaria());
+		banco.guardarCuentas(cb3 = new CuentaBancaria());
+		banco.guardarCuentas(cb4 = new CuentaBancaria());
 		try {
-			cb = new CuentaBancaria(crearCuentasBancarias());
-			cb1 = new CuentaBancaria(crearCuentasBancarias());
-			cb2 = new CuentaBancaria(crearCuentasBancarias());
-			cb3 = new CuentaBancaria(crearCuentasBancarias());
-			cb4 = new CuentaBancaria(crearCuentasBancarias());
+			cb.setNumeroCuenta(crearCuentasBancarias());
+			cb1.setNumeroCuenta(crearCuentasBancarias());
+			cb2.setNumeroCuenta(crearCuentasBancarias());
+			cb3.setNumeroCuenta(crearCuentasBancarias());
+			cb4.setNumeroCuenta(crearCuentasBancarias());
+			
 		} catch (crearCuentaExcepcion e) {
-			// TODO Auto-generated catch block
-			System.out.println("Cuenta errónea");
+			System.out.println("No ha podido crearse la cuenta");
 		}
-		
-		try {
-			b.guardarCuentas(cb);
-			b.guardarCuentas(cb1);
-			b.guardarCuentas(cb2);
-			b.guardarCuentas(cb3);
-			b.guardarCuentas(cb4);
-		} catch (cuentaDuplicadaExcepcion e) {
-			System.out.println("Cuenta duplicada");
-		}
-		
-		System.out.println(b);
+		System.out.println(banco);
 	}
+		
 	static private String crearCuentasBancarias(){
 		Random r = new Random();
 		String cuentaBancaria = "";

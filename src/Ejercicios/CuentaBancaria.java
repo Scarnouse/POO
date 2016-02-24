@@ -65,6 +65,10 @@ public class CuentaBancaria {
 		this.fechaCreacion = fechaCreacion;
 	}
 	
+	public int getCuentasCreadas(){
+		return cuentasCreadas;
+	}
+	
 	private String crearDigitoControl(){
 		String digitoControl ="";
 		int primerDigito = 0;
@@ -107,7 +111,7 @@ public class CuentaBancaria {
 	}
 
 	//metodo de testeo
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		CuentaBancaria cb = new CuentaBancaria();
 		try {
 			cb.setNumeroCuenta("9430301240");	
@@ -118,7 +122,7 @@ public class CuentaBancaria {
 			System.out.println("Numero de cuenta errónea");
 		}
 		
-	}
+	}*/
 
 }
 
