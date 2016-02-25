@@ -65,7 +65,7 @@ public class CuentaBancaria {
 		this.fechaCreacion = fechaCreacion;
 	}
 	
-	public int getCuentasCreadas(){
+	public static int getCuentasCreadas(){
 		return cuentasCreadas;
 	}
 	
@@ -111,7 +111,7 @@ public class CuentaBancaria {
 	}
 
 	//metodo de testeo
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		CuentaBancaria cb = new CuentaBancaria();
 		try {
 			cb.setNumeroCuenta("6812960280");	
@@ -122,7 +122,7 @@ public class CuentaBancaria {
 			System.out.println("Numero de cuenta errónea");
 		}
 		
-	}
+	}*/
 
 }
 

@@ -6,7 +6,7 @@ import java.util.List;
 public class Banco {
 	// atributos
 	List<CuentaBancaria> b = new ArrayList<CuentaBancaria>();
-	CuentaBancaria cb = new CuentaBancaria();
+	//CuentaBancaria cb = new CuentaBancaria();
 	
 	//métodos
 	public boolean guardarCuentas(CuentaBancaria cuenta) throws cuentaDuplicadaExcepcion{
@@ -23,7 +23,7 @@ public class Banco {
 	}
 	public CuentaBancaria devolverCuentaMayorSaldo(){
 		CuentaBancaria cbMayorSaldo = b.get(0);
-		for (int i = 0; i < cb.getCuentasCreadas()-1; i++) {
+		for (int i = 0; i < CuentaBancaria.getCuentasCreadas()-1; i++) {
 			if (b.get(i).getSaldo()>cbMayorSaldo.getSaldo()){
 				cbMayorSaldo = b.get(i);
 			}
@@ -33,7 +33,7 @@ public class Banco {
 	
 	public CuentaBancaria devolverCuentaMenorSaldo(){
 		CuentaBancaria cbMenorSaldo = b.get(0);
-		for (int i = 0; i < cb.getCuentasCreadas()-1; i++) {
+		for (int i = 0; i < CuentaBancaria.getCuentasCreadas()-1; i++) {
 			if (b.get(i).getSaldo()<cbMenorSaldo.getSaldo()){
 				cbMenorSaldo = b.get(i);
 			}
@@ -43,16 +43,16 @@ public class Banco {
 	
 	private double getSaldoMedio(){
 		double saldoMedio = 0;
-		for (int i = 0; i < cb.getCuentasCreadas()-1; i++) {
+		for (int i = 0; i < CuentaBancaria.getCuentasCreadas()-1; i++) {
 			saldoMedio += b.get(i).getSaldo();
 		}
-		return saldoMedio/cb.getCuentasCreadas();
+		return saldoMedio/CuentaBancaria.getCuentasCreadas();
 	}
 	
 	public List<CuentaBancaria> devolverListaMorosos(){
 		List<CuentaBancaria> listaMorosos = new ArrayList<CuentaBancaria>();
 		for (int i = 0; i < b.size(); i++) {
-			if(b.get(i).getSaldo()<0) listaMorosos.add(cb);
+			if(b.get(i).getSaldo()<0) listaMorosos.add(b.get(i));
 		}
 		return listaMorosos;
 	}
